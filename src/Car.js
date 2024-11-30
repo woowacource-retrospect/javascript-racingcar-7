@@ -24,9 +24,7 @@ class Car {
     let tryNum = 0;
     while (tryNum < tryCount) {
       for (const car of Object.keys(this.carPosition)) {
-        if (this.#canMoveForward()) {
-          this.carPosition[car] += SPECIAL_CHARACTERS.DASH;
-        }
+        this.#moveForward(car);
       }
       Output.printResult(this.carPosition);
       tryNum++;
@@ -40,6 +38,12 @@ class Car {
       return true;
     }
     return false;
+  }
+
+  #moveForward(car) {
+    if (this.#canMoveForward()) {
+      this.carPosition[car] += SPECIAL_CHARACTERS.DASH;
+    }
   }
 }
 export default Car;
